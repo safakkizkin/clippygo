@@ -38,7 +38,7 @@ jobs:
             echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ steps.sha.outputs.sha }}
           fetch-depth: 0
@@ -50,9 +50,6 @@ jobs:
         id: skip
         run: |
           msg="$(git log -1 --pretty=%B)"
-          echo "head_message<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$msg" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
           if echo "$msg" | grep -q '\[skip release\]'; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
@@ -69,15 +66,11 @@ jobs:
         if: steps.skip.outputs.skip != 'true'
         id: version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-          DRY_RUN: true
-          DEFAULT_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || 'patch' }}
-          # Conventional commits on squash titles:
-          #   feat: → minor, fix:/perf: → patch, BREAKING CHANGE/#major → major
-          INITIAL_VERSION: 1.0.0
-        # Tags are unprefixed (1.75.0), not v1.75.0.
-        uses: anothrNick/github-tag-action@1.75.0
+          FORCE_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || '' }}
+        run: |
+          chmod +x scripts/next_semver.sh
+          # Default patch when commit messages don't imply feat/BREAKING.
+          ./scripts/next_semver.sh patch
 
       - name: Decide whether to publish
         if: steps.skip.outputs.skip != 'true'
@@ -87,11 +80,10 @@ jobs:
           part="${{ steps.version.outputs.part }}"
           echo "new_tag=$new"
           echo "part=$part"
-          if [ -z "$new" ] || [ "$new" = "none" ]; then
+          if [ -z "$new" ]; then
             echo "publish=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          # Avoid republishing an existing tag.
           if git rev-parse -q --verify "refs/tags/$new" >/dev/null; then
             echo "Tag $new already exists — skip"
             echo "publish=false" >> "$GITHUB_OUTPUT"
@@ -140,17 +132,16 @@ jobs:
 
       - name: Commit version + cask sha on main
         if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          TAG="${{ steps.decide.outputs.tag }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             ClippyGo.xcodeproj/project.pbxproj \
             Casks/clippygo.rb
-          git commit -m "chore(release): ${{ steps.decide.outputs.tag }} [skip release]"
+          git commit -m "chore(release): ${TAG} [skip release]"
           # Requires branch protection bypass for GitHub Actions (or a PAT in RELEASE_GITHUB_TOKEN).
           if ! git push origin HEAD:main; then
-            echo "::warning::Could not push version bump to main (branch protection?). Release $TAG was still published."
+            echo "::warning::Could not push version bump to main (branch protection?). Release ${TAG} was still published."
             echo "Grant Actions bypass on main, or set secret RELEASE_GITHUB_TOKEN with repo scope."
           fi
