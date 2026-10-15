@@ -3,41 +3,54 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 110;
+	objectVersion = 56;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		89F9C316A70149749DD47421 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF25197EBC4F469E91FBBD /* AppLanguage.swift */; };
+		4A925FE750284493AF006B8C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DF9F30972746BF956FF6B3 /* AppSettings.swift */; };
+		813A0C58A909415E9149C172 /* AppStoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F58F55AD31347F1BC5A6AEC /* AppStoreConfig.swift */; };
+		B3E8CB3D040841F7BF080440 /* BrandLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B87710C044CE28360B9E3 /* BrandLogo.swift */; };
+		C92CEE44969F47FE8985D3D0 /* ClipboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02056298BEBE4895B0BB0E2A /* ClipboardItem.swift */; };
+		5ED150677E514A7883E18833 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8944CD48304D579601E24D /* ClipboardMonitor.swift */; };
+		FD5D5197750B4210BDD444CF /* ClipboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA255C68B79A469880934895 /* ClipboardStore.swift */; };
+		2E8595FE8B9C4C06BCD9DD05 /* ClippyGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A029BF074414BF0BF381C40 /* ClippyGoApp.swift */; };
+		7828FD454D6E438BA331A4F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBA8F7118B45CCA528B3B7 /* ContentView.swift */; };
+		6E83ACB6208D4CF9AAAA45C0 /* LoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6684C3B23C334692AD404DD7 /* LoginItem.swift */; };
+		3AF85E76BDFC42CBB8BBC693 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C529AD82E44ECBC85D331 /* SettingsView.swift */; };
+		A5900CF45FC84C129D50A90C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FA0835BB6948BCB4DEF6BE /* Assets.xcassets */; };
+		6E018D4B7E714D19B19A9CDD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = FA25A4F7052946A0AF117530 /* Localizable.xcstrings */; };
+		64466CFEDDE5444EAC3BE4B6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5D91F50524FF4AE8A0753FCA /* PrivacyInfo.xcprivacy */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A6478F463076580000B035F4 /* ClippyGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClippyGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69CF25197EBC4F469E91FBBD /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		31DF9F30972746BF956FF6B3 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		7F58F55AD31347F1BC5A6AEC /* AppStoreConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreConfig.swift; sourceTree = "<group>"; };
+		920B87710C044CE28360B9E3 /* BrandLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandLogo.swift; sourceTree = "<group>"; };
+		02056298BEBE4895B0BB0E2A /* ClipboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardItem.swift; sourceTree = "<group>"; };
+		1A8944CD48304D579601E24D /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
+		AA255C68B79A469880934895 /* ClipboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardStore.swift; sourceTree = "<group>"; };
+		9A029BF074414BF0BF381C40 /* ClippyGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippyGoApp.swift; sourceTree = "<group>"; };
+		03DBA8F7118B45CCA528B3B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6684C3B23C334692AD404DD7 /* LoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItem.swift; sourceTree = "<group>"; };
+		0B6C529AD82E44ECBC85D331 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F3FA0835BB6948BCB4DEF6BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA25A4F7052946A0AF117530 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5D91F50524FF4AE8A0753FCA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0002DF4C69DF454E8A75C47A /* ClippyGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClippyGo.entitlements; sourceTree = "<group>"; };
+		C2397D7243B54D57B5D99DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADEEF456E2694E7E803A03EF /* AppIcon-Complete.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "AppIcon-Complete.icns"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A6478F5A3076580100B035F4 /* Exceptions for "ClippyGo" folder in "ClippyGo" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AppIcon-Complete.icns,
-				ClippyGo.entitlements,
-				Info.plist,
-			);
-			target = A6478F453076580000B035F4 /* ClippyGo */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		A6478F483076580000B035F4 /* ClippyGo */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A6478F5A3076580100B035F4 /* Exceptions for "ClippyGo" folder in "ClippyGo" target */,
-			);
-			path = ClippyGo;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A6478F433076580000B035F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -45,9 +58,33 @@
 		A6478F3D3076580000B035F4 = {
 			isa = PBXGroup;
 			children = (
-				A6478F483076580000B035F4 /* ClippyGo */,
+				E686B4FC54074CBB9FF41F80 /* ClippyGo */,
 				A6478F473076580000B035F4 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		E686B4FC54074CBB9FF41F80 /* ClippyGo */ = {
+			isa = PBXGroup;
+			children = (
+				69CF25197EBC4F469E91FBBD /* AppLanguage.swift */,
+				31DF9F30972746BF956FF6B3 /* AppSettings.swift */,
+				7F58F55AD31347F1BC5A6AEC /* AppStoreConfig.swift */,
+				920B87710C044CE28360B9E3 /* BrandLogo.swift */,
+				02056298BEBE4895B0BB0E2A /* ClipboardItem.swift */,
+				1A8944CD48304D579601E24D /* ClipboardMonitor.swift */,
+				AA255C68B79A469880934895 /* ClipboardStore.swift */,
+				9A029BF074414BF0BF381C40 /* ClippyGoApp.swift */,
+				03DBA8F7118B45CCA528B3B7 /* ContentView.swift */,
+				6684C3B23C334692AD404DD7 /* LoginItem.swift */,
+				0B6C529AD82E44ECBC85D331 /* SettingsView.swift */,
+				F3FA0835BB6948BCB4DEF6BE /* Assets.xcassets */,
+				FA25A4F7052946A0AF117530 /* Localizable.xcstrings */,
+				5D91F50524FF4AE8A0753FCA /* PrivacyInfo.xcprivacy */,
+				0002DF4C69DF454E8A75C47A /* ClippyGo.entitlements */,
+				C2397D7243B54D57B5D99DEA /* Info.plist */,
+				ADEEF456E2694E7E803A03EF /* AppIcon-Complete.icns */,
+			);
+			path = ClippyGo;
 			sourceTree = "<group>";
 		};
 		A6478F473076580000B035F4 /* Products */ = {
@@ -59,6 +96,86 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6478F453076580000B035F4 /* ClippyGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6478F533076580100B035F4 /* Build configuration list for PBXNativeTarget "ClippyGo" */;
+			buildPhases = (
+				A6478F423076580000B035F4 /* Sources */,
+				A6478F433076580000B035F4 /* Frameworks */,
+				A6478F443076580000B035F4 /* Resources */,
+				A6478F5B3076580100B035F4 /* Install Complete App Icon */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClippyGo;
+			productName = ClippyGo;
+			productReference = A6478F463076580000B035F4 /* ClippyGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6478F3E3076580000B035F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A6478F453076580000B035F4 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A6478F413076580000B035F4 /* Build configuration list for PBXProject "ClippyGo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				tr,
+				de,
+				fr,
+				es,
+				it,
+				nl,
+				"pt-BR",
+				ja,
+				ko,
+				"zh-Hans",
+				ru,
+				pl,
+				ar,
+				he,
+				sv,
+			);
+			mainGroup = A6478F3D3076580000B035F4;
+			productRefGroup = A6478F473076580000B035F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6478F453076580000B035F4 /* ClippyGo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6478F443076580000B035F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5900CF45FC84C129D50A90C /* Assets.xcassets in Resources */,
+				6E018D4B7E714D19B19A9CDD /* Localizable.xcstrings in Resources */,
+				64466CFEDDE5444EAC3BE4B6 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		A6478F5B3076580100B035F4 /* Install Complete App Icon */ = {
@@ -84,93 +201,29 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 
-/* Begin PBXNativeTarget section */
-		A6478F453076580000B035F4 /* ClippyGo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6478F533076580100B035F4 /* Build configuration list for PBXNativeTarget "ClippyGo" */;
-			buildPhases = (
-				A6478F423076580000B035F4 /* Sources */,
-				A6478F433076580000B035F4 /* Frameworks */,
-				A6478F443076580000B035F4 /* Resources */,
-				A6478F5B3076580100B035F4 /* Install Complete App Icon */,
-			);
-			buildRules = (
-			);
-			fileSystemSynchronizedGroups = (
-				A6478F483076580000B035F4 /* ClippyGo */,
-			);
-			name = ClippyGo;
-			productName = ClippyGo;
-			productReference = A6478F463076580000B035F4 /* ClippyGo.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		A6478F3E3076580000B035F4 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2700;
-				LastUpgradeCheck = 2700;
-				TargetAttributes = {
-					A6478F453076580000B035F4 = {
-						CreatedOnToolsVersion = 27.0;
-					};
-				};
-			};
-			buildConfigurationList = A6478F413076580000B035F4 /* Build configuration list for PBXProject "ClippyGo" */;
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-				tr,
-				de,
-				fr,
-				es,
-				it,
-				nl,
-				"pt-BR",
-				ja,
-				ko,
-				"zh-Hans",
-				ru,
-				pl,
-				ar,
-				he,
-				sv,
-			);
-			mainGroup = A6478F3D3076580000B035F4;
-			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
-			productRefGroup = A6478F473076580000B035F4 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				A6478F453076580000B035F4 /* ClippyGo */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		A6478F443076580000B035F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		A6478F423076580000B035F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
+				89F9C316A70149749DD47421 /* AppLanguage.swift in Sources */,
+				4A925FE750284493AF006B8C /* AppSettings.swift in Sources */,
+				813A0C58A909415E9149C172 /* AppStoreConfig.swift in Sources */,
+				B3E8CB3D040841F7BF080440 /* BrandLogo.swift in Sources */,
+				C92CEE44969F47FE8985D3D0 /* ClipboardItem.swift in Sources */,
+				5ED150677E514A7883E18833 /* ClipboardMonitor.swift in Sources */,
+				FD5D5197750B4210BDD444CF /* ClipboardStore.swift in Sources */,
+				2E8595FE8B9C4C06BCD9DD05 /* ClippyGoApp.swift in Sources */,
+				7828FD454D6E438BA331A4F9 /* ContentView.swift in Sources */,
+				6E83ACB6208D4CF9AAAA45C0 /* LoginItem.swift in Sources */,
+				3AF85E76BDFC42CBB8BBC693 /* SettingsView.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A6478F513076580100B035F4 /* Debug configuration for PBXProject "ClippyGo" */ = {
+		A6478F513076580100B035F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -233,7 +286,7 @@
 			};
 			name = Debug;
 		};
-		A6478F523076580100B035F4 /* Release configuration for PBXProject "ClippyGo" */ = {
+		A6478F523076580100B035F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -283,12 +336,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
-		A6478F543076580100B035F4 /* Debug configuration for PBXNativeTarget "ClippyGo" */ = {
+		A6478F543076580100B035F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -320,15 +374,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		A6478F553076580100B035F4 /* Release configuration for PBXNativeTarget "ClippyGo" */ = {
+		A6478F553076580100B035F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -360,10 +411,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -374,21 +422,22 @@
 		A6478F413076580000B035F4 /* Build configuration list for PBXProject "ClippyGo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6478F513076580100B035F4 /* Debug configuration for PBXProject "ClippyGo" */,
-				A6478F523076580100B035F4 /* Release configuration for PBXProject "ClippyGo" */,
+				A6478F513076580100B035F4 /* Debug */,
+				A6478F523076580100B035F4 /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		A6478F533076580100B035F4 /* Build configuration list for PBXNativeTarget "ClippyGo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6478F543076580100B035F4 /* Debug configuration for PBXNativeTarget "ClippyGo" */,
-				A6478F553076580100B035F4 /* Release configuration for PBXNativeTarget "ClippyGo" */,
+				A6478F543076580100B035F4 /* Debug */,
+				A6478F553076580100B035F4 /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
 	rootObject = A6478F3E3076580000B035F4 /* Project object */;
-	validationLevel = 1;
 }

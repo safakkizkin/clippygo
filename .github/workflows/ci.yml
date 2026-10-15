@@ -7,14 +7,27 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          # Classic objectVersion 56 works on the runner default (16.4).
+          xcode-version: "16.4"
+
+      - name: Show Xcode
+        run: xcodebuild -version
+
       - name: Build
         run: |
           xcodebuild \
+            -project ClippyGo.xcodeproj \
             -scheme ClippyGo \
             -configuration Release \
+            -destination 'platform=macOS' \
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
+            ONLY_ACTIVE_ARCH=YES \
             build
