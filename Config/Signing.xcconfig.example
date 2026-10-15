@@ -1,0 +1,4 @@
+// Copy to Signing.xcconfig (gitignored) and fill in your team.
+// Or set the Development Team in Xcode → Signing & Capabilities.
+DEVELOPMENT_TEAM =
+PRODUCT_BUNDLE_IDENTIFIER = dev.safak.clippygo

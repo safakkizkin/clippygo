@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Xcode user-specific
+xcuserdata/
+**/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Build / release artifacts
+build/
+dist/
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods / Carthage (if added later)
+Pods/
+Carthage/Build/
+
+# Local signing / secrets (never commit)
+*.p12
+*.mobileprovision
+*.pem
+.env
+.env.*
+Secrets.xcconfig
+Local.xcconfig
+
+# IDE
+.idea/
+*.swp
+*~
