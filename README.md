@@ -8,20 +8,33 @@ Stores text, images, PDFs, and file copies locally (SQLite + on-disk payloads). 
 
 ## Install (Homebrew cask)
 
-After the first GitHub Release exists:
-
 ```bash
 brew tap safakkizkin/tap
 brew install --cask clippygo
 ```
 
-Or install a release artifact directly:
+Or install from this repo’s cask (points at [GitHub Releases](https://github.com/safakkizkin/clippygo/releases)):
 
 ```bash
 brew install --cask ./homebrew/Casks/clippygo.rb
 ```
 
-> The tap formula points at GitHub Releases. Until a release `.zip`/`.dmg` is published, use **Build from source** below.
+## Releases
+
+Merges to `main` publish a SemVer GitHub Release automatically after CI passes:
+
+| Squash commit / PR title | Bump |
+| --- | --- |
+| `feat:` … | minor |
+| `fix:` / `perf:` … | patch |
+| `BREAKING CHANGE:` / `#major` | major |
+| anything else | patch (default) |
+
+The workflow builds `ClippyGo-x.y.z.zip`, uploads it, and updates `homebrew/Casks/clippygo.rb` (`version` + `sha256`) plus `MARKETING_VERSION` in the Xcode project.
+
+Manual bump: Actions → **Release** → Run workflow → choose `patch` / `minor` / `major`.
+
+> The release job pushes the cask/`MARKETING_VERSION` bump to `main`. Under branch protection, allow **GitHub Actions** to bypass required PRs (or add a `RELEASE_GITHUB_TOKEN` PAT secret).
 
 ## Build from source
 
