@@ -1,0 +1,156 @@
+name: Release
+
+on:
+  # After CI succeeds on main (every merged PR).
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+  # Manual: choose major / minor / patch.
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: SemVer bump
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: macos-15
+    steps:
+      - name: Resolve checkout SHA
+        id: sha
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.sha.outputs.sha }}
+          fetch-depth: 0
+          # Need a token that can push version bumps past branch protection
+          # when "Allow GitHub Actions to create and approve pull requests"
+          # / bypass rules are configured. GITHUB_TOKEN is enough for tags + releases.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Skip release metadata commits
+        id: skip
+        run: |
+          msg="$(git log -1 --pretty=%B)"
+          echo "head_message<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$msg" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          if echo "$msg" | grep -q '\[skip release\]'; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Select Xcode
+        if: steps.skip.outputs.skip != 'true'
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "16.4"
+
+      - name: Compute next SemVer
+        if: steps.skip.outputs.skip != 'true'
+        id: version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DRY_RUN: true
+          DEFAULT_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || 'patch' }}
+          # Conventional commits on squash titles:
+          #   feat: → minor, fix:/perf: → patch, BREAKING CHANGE/#major → major
+          INITIAL_VERSION: 1.0.0
+        uses: anothrNick/github-tag-action@v1.73.0
+
+      - name: Decide whether to publish
+        if: steps.skip.outputs.skip != 'true'
+        id: decide
+        run: |
+          new="${{ steps.version.outputs.new_tag }}"
+          part="${{ steps.version.outputs.part }}"
+          echo "new_tag=$new"
+          echo "part=$part"
+          if [ -z "$new" ] || [ "$new" = "none" ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Avoid republishing an existing tag.
+          if git rev-parse -q --verify "refs/tags/$new" >/dev/null; then
+            echo "Tag $new already exists — skip"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ver="${new#v}"
+          echo "publish=true" >> "$GITHUB_OUTPUT"
+          echo "tag=$new" >> "$GITHUB_OUTPUT"
+          echo "version=$ver" >> "$GITHUB_OUTPUT"
+
+      - name: Package zip
+        if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
+        run: |
+          chmod +x scripts/package_release.sh scripts/bump_version.sh
+          ./scripts/package_release.sh "${{ steps.decide.outputs.version }}"
+
+      - name: Read sha256
+        if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
+        id: sha256
+        run: |
+          SHA="$(awk '{print $1}' "dist/ClippyGo-${{ steps.decide.outputs.version }}.sha256")"
+          echo "sha256=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Bump version files
+        if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
+        run: |
+          ./scripts/bump_version.sh \
+            "${{ steps.decide.outputs.version }}" \
+            "${{ steps.sha256.outputs.sha256 }}"
+
+      - name: Create tag + GitHub Release
+        if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.decide.outputs.tag }}"
+          VER="${{ steps.decide.outputs.version }}"
+          # Tag the merge commit (pre version-bump). App binary already embeds $VER via xcodebuild.
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+          gh release create "$TAG" \
+            "dist/ClippyGo-${VER}.zip" \
+            --title "ClippyGo ${VER}" \
+            --generate-notes \
+            --verify-tag
+
+      - name: Commit version + cask sha on main
+        if: steps.skip.outputs.skip != 'true' && steps.decide.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            ClippyGo.xcodeproj/project.pbxproj \
+            homebrew/Casks/clippygo.rb
+          git commit -m "chore(release): ${{ steps.decide.outputs.tag }} [skip release]"
+          # Requires branch protection bypass for GitHub Actions (or a PAT in RELEASE_GITHUB_TOKEN).
+          if ! git push origin HEAD:main; then
+            echo "::warning::Could not push version bump to main (branch protection?). Release $TAG was still published."
+            echo "Grant Actions bypass on main, or set secret RELEASE_GITHUB_TOKEN with repo scope."
+          fi
