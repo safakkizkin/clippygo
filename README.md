@@ -4,7 +4,7 @@ Menu bar clipboard history for macOS.
 
 Stores text, images, PDFs, and file copies locally (SQLite + on-disk payloads). No network, no accounts, no analytics.
 
-**Requirements:** macOS 14+, Xcode 15+ (to build from source)
+**Requirements:** macOS 14+, Xcode 16+
 
 ## Install (Homebrew cask)
 
