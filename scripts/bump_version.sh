@@ -7,7 +7,7 @@ VERSION="${1:?usage: bump_version.sh <semver> [sha256]}"
 SHA256="${2:-}"
 
 PBX="${ROOT}/ClippyGo.xcodeproj/project.pbxproj"
-CASK="${ROOT}/homebrew/Casks/clippygo.rb"
+CASK="${ROOT}/Casks/clippygo.rb"
 
 if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "error: version must be semver X.Y.Z (got: $VERSION)" >&2

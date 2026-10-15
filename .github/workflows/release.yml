@@ -76,7 +76,8 @@ jobs:
           # Conventional commits on squash titles:
           #   feat: → minor, fix:/perf: → patch, BREAKING CHANGE/#major → major
           INITIAL_VERSION: 1.0.0
-        uses: anothrNick/github-tag-action@v1.73.0
+        # Tags are unprefixed (1.75.0), not v1.75.0.
+        uses: anothrNick/github-tag-action@1.75.0
 
       - name: Decide whether to publish
         if: steps.skip.outputs.skip != 'true'
@@ -146,7 +147,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             ClippyGo.xcodeproj/project.pbxproj \
-            homebrew/Casks/clippygo.rb
+            Casks/clippygo.rb
           git commit -m "chore(release): ${{ steps.decide.outputs.tag }} [skip release]"
           # Requires branch protection bypass for GitHub Actions (or a PAT in RELEASE_GITHUB_TOKEN).
           if ! git push origin HEAD:main; then

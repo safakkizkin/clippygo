@@ -16,4 +16,13 @@ cask "clippygo" do
     "~/Library/Caches/dev.safak.clippygo",
     "~/Library/Preferences/dev.safak.clippygo.plist",
   ]
+
+  caveats <<~EOS
+    ClippyGo releases are ad-hoc signed (not Developer ID / notarized).
+    If Gatekeeper blocks launch after install:
+
+      xattr -dr com.apple.quarantine /Applications/ClippyGo.app
+
+    Or right-click the app → Open.
+  EOS
 end

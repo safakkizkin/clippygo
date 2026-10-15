@@ -6,17 +6,19 @@ Stores text, images, PDFs, and file copies locally (SQLite + on-disk payloads). 
 
 **Requirements:** macOS 14+, Xcode 16+
 
-## Install (Homebrew cask)
+## Install (Homebrew)
+
+This repo is the tap (same pattern as ModeBar). After a [GitHub Release](https://github.com/safakkizkin/clippygo/releases) exists and `Casks/clippygo.rb` has a real `sha256`:
 
 ```bash
-brew tap safakkizkin/tap
+brew tap safakkizkin/clippygo https://github.com/safakkizkin/clippygo
 brew install --cask clippygo
 ```
 
-Or install from this repo’s cask (points at [GitHub Releases](https://github.com/safakkizkin/clippygo/releases)):
+From a local clone:
 
 ```bash
-brew install --cask ./homebrew/Casks/clippygo.rb
+brew install --cask ./Casks/clippygo.rb
 ```
 
 ## Releases
@@ -30,7 +32,7 @@ Merges to `main` publish a SemVer GitHub Release automatically after CI passes:
 | `BREAKING CHANGE:` / `#major` | major |
 | anything else | patch (default) |
 
-The workflow builds `ClippyGo-x.y.z.zip`, uploads it, and updates `homebrew/Casks/clippygo.rb` (`version` + `sha256`) plus `MARKETING_VERSION` in the Xcode project.
+The workflow builds `ClippyGo-x.y.z.zip`, uploads it, and updates `Casks/clippygo.rb` (`version` + `sha256`) plus `MARKETING_VERSION` in the Xcode project.
 
 Manual bump: Actions → **Release** → Run workflow → choose `patch` / `minor` / `major`.
 
