@@ -42,10 +42,9 @@ jobs:
         with:
           ref: ${{ steps.sha.outputs.sha }}
           fetch-depth: 0
-          # Need a token that can push version bumps past branch protection
-          # when "Allow GitHub Actions to create and approve pull requests"
-          # / bypass rules are configured. GITHUB_TOKEN is enough for tags + releases.
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # Optional PAT that can bypass branch protection for the version-bump push.
+          # Tags + Releases work with GITHUB_TOKEN alone.
+          token: ${{ secrets.RELEASE_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Skip release metadata commits
         id: skip
