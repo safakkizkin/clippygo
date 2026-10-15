@@ -1,6 +1,6 @@
 cask "clippygo" do
   version "1.0.0"
-  sha256 :no_check # replace with `shasum -a 256` of the release zip after first publish
+  sha256 "dd2f8f626b7e029b91624735323358011cb508f906452344ec9f536333cecd5e"
 
   url "https://github.com/safakkizkin/clippygo/releases/download/v#{version}/ClippyGo-#{version}.zip"
   name "ClippyGo"
